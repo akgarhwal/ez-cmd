@@ -25,8 +25,8 @@ rebase_with_branch() {
   # Get Base branch from User Input
   local BASE_BRANCH=$1
   # Check is Base branch is provided by user or not
-  if [[ ! -v BASE_BRANCH ]]; then
-    echo -e "Error: No branch specified for rebase.\nUsages: rebase_with_branch [branch name]"
+  if [[ -z BASE_BRANCH ]]; then
+    echo -e "Error: No branch specified for rebase.\n\nUsages: rebase_with_branch [branch name]"
     exit 1
   fi
 
