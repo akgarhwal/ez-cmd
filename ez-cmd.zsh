@@ -13,7 +13,6 @@ plugin_name="ez-cmd"
 init() {
   # Define functions
   autoload -Uz rebase_with_branch
-  autoload -Uz switch_branch
   autoload -Uz push_changes
 }
 
@@ -26,39 +25,14 @@ rebase_with_branch() {
   # Get the current branch
   local BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-  # Get the list of branches
-  local BRANCHES=$(git branch -r | sed 's/*//')
-
-  # Ask the user to select a branch
-  echo "Please select a branch to rebase with $BRANCH:"
-  select BRANCH_SELECTED in $BRANCHES; do
-    if [ -n "$BRANCH_SELECTED" ]; then
-      break
-    fi
-  done
+  # Get Base branch from User Input
+  local BASE_BRANCH=$1
 
   # Fetch the remote branch
-  git fetch origin $BRANCH_SELECTED
+  git fetch origin $BASE_BRANCH
 
   # Run the rebase
-  git rebase origin/$BRANCH_SELECTED $BRANCH
-}
-
-# Function to switch the current branch
-switch_branch() {
-  # Get the list of branches
-  local BRANCHES=$(git branch -a)
-
-  # Ask the user to select a branch
-  echo "Please select a branch to switch to:"
-  select BRANCH_SELECTED in $BRANCHES; do
-    if [ -n "$BRANCH_SELECTED" ]; then
-      break
-    fi
-  done
-
-  # Switch to the selected branch
-  git checkout $BRANCH_SELECTED
+  git rebase origin/$BASE_BRANCH $BRANCH
 }
 
 # Function to push the changes to the remote repository
@@ -74,15 +48,11 @@ push_changes() {
 # This should be the entry point for the plugin, and should call the necessary functions
 main() {
   init
-  echo "Please select a function:"
-  select choice in "Rebase with branch" "Switch Branch" "Push changes"; do
-    case $choice in
-      "Rebase with branch" ) rebase_with_branch; break;;
-      "Switch Branch" ) switch_branch; break;;
-      "Push changes" ) push_changes; break;;
-    esac
-  done
+
+  rebase_with_branch; 
+  push_changes; 
 }
 
 # Add the plugin to the oh-my-zsh plugin list
 plugins=(... $plugin_name)
+
