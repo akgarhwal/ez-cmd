@@ -22,11 +22,16 @@ init() {
 
 # Function to rebase the current branch with a given branch
 rebase_with_branch() {
-  # Get the current branch
-  local BRANCH=$(git rev-parse --abbrev-ref HEAD)
-
   # Get Base branch from User Input
   local BASE_BRANCH=$1
+  # Check is Base branch is provided by user or not
+  if [[ ! -v BASE_BRANCH ]]; then
+    echo -e "Error: No branch specified for rebase.\nUsages: rebase_with_branch [branch name]"
+    exit 1
+  fi
+
+  # Get the current branch
+  local BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
   # Fetch the remote branch
   git fetch origin $BASE_BRANCH
