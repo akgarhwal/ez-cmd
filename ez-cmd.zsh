@@ -27,7 +27,7 @@ rebase_with_branch() {
   # Check is Base branch is provided by user or not
   if [[ -z $BASE_BRANCH ]]; then
     echo -e "Error: No branch specified for rebase.\n\nUsages: rebase_with_branch [branch name]"
-    exit 1
+    return
   fi
 
   # Get the current branch
