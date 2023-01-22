@@ -14,8 +14,11 @@ cmd_prefix="ec_"
 # This should set the plugin's settings and define any functions
 init() {
   # Define functions
-  autoload -Uz rebase_with_branch
-  autoload -Uz push_changes
+  autoload -Uz ez_cmd
+  
+  # Git
+  autoload -Uz ec_rebase_with_branch
+  autoload -Uz ec_push_changes
 }
 
 ##################################
@@ -51,13 +54,45 @@ ec_push_changes() {
   git push origin $BRANCH
 }
 
+
+
+
+##################################
+#             HELP               #
+##################################
+
+function show_help {
+  echo "ez_cmd - a plugin for zsh that makes it easy to use common commands"
+  echo "Usage: ez_cmd [options]"
+  echo "Options:"
+  echo "  -h, --help        Show this help page"
+  echo "  -l, --list        List all available commands"
+  echo " "
+  echo "Usage: [Command]           Run the specified command"
+  echo "Available commands:"
+  echo "ec_rebase_with_branch            Create a backup of important files"
+  echo "ec_push_changes                  Update the system and installed packages"
+
+}
+
+function ez_cmd {
+  if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    show_help
+  fi
+  if [[ "$1" == "-l" || "$1" == "--list" ]]; then
+    echo "Not supported for now."
+  fi
+}
+
+
 # Main function to execute the plugin
 # This should be the entry point for the plugin, and should call the necessary functions
 main() {
   init
-
+  # 
   ec_rebase_with_branch; 
   ec_push_changes;
+  ez_cmd;
 }
 
 # Add the plugin to the oh-my-zsh plugin list
