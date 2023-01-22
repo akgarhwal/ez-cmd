@@ -64,7 +64,7 @@ ec_push_changes() {
 function show_help_options {
   echo "ez_cmd - a plugin for zsh that makes it easy to use common commands"
   echo ""
-  echo "Usage: ez_cmd [options]"
+  echo "Usage: ez_cmd [Option]"
   echo "Options:"
   echo "  -h, --help                                   Show this help page"
   echo "  -l, --list                                   List all available commands"
