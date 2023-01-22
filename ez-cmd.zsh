@@ -8,6 +8,8 @@
 
 plugin_name="ez-cmd"
 
+cmd_prefix="ec_"
+
 # Function to initialize the plugin
 # This should set the plugin's settings and define any functions
 init() {
@@ -21,7 +23,7 @@ init() {
 ##################################
 
 # Function to rebase the current branch with a given branch
-rebase_with_branch() {
+ec_rebase_with_branch() {
   # Get Base branch from User Input
   local BASE_BRANCH=$1
   # Check is Base branch is provided by user or not
@@ -41,7 +43,7 @@ rebase_with_branch() {
 }
 
 # Function to push the changes to the remote repository
-push_changes() {
+ec_push_changes() {
   # Get the current branch
   local BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
@@ -54,8 +56,8 @@ push_changes() {
 main() {
   init
 
-  rebase_with_branch; 
-  push_changes; 
+  ec_rebase_with_branch; 
+  ec_push_changes;
 }
 
 # Add the plugin to the oh-my-zsh plugin list
