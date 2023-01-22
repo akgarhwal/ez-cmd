@@ -10,7 +10,7 @@
 
 ## Install Plugin
 ```sh
-git clone https://github.com/akgarhwal/ez-cmd.git $ZSH_CUSTOM/plugins/
+git clone https://github.com/akgarhwal/ez-cmd.git $ZSH_CUSTOM/plugins/ez-cmd
 ```
 
 ## How to use ?
