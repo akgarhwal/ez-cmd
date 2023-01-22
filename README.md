@@ -8,9 +8,10 @@
 
 [ez-cmd documentation](https://github.com/akgarhwal/ez-cmd/blob/main/docs/ez-cmd.md)
 
-## How to Install ?
-// TODO: Add more details
-
+## Install Plugin
+```sh
+git clone https://github.com/akgarhwal/ez-cmd.git $ZSH_CUSTOM/plugins/
+```
 
 ## How to use ?
 // TODO: Add more details
