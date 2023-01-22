@@ -61,26 +61,38 @@ ec_push_changes() {
 #             HELP               #
 ##################################
 
-function show_help {
+function show_help_options {
   echo "ez_cmd - a plugin for zsh that makes it easy to use common commands"
+  echo ""
   echo "Usage: ez_cmd [options]"
   echo "Options:"
-  echo "  -h, --help        Show this help page"
-  echo "  -l, --list        List all available commands"
-  echo " "
-  echo "Usage: [Command]           Run the specified command"
-  echo "Available commands:"
-  echo "ec_rebase_with_branch            Create a backup of important files"
-  echo "ec_push_changes                  Update the system and installed packages"
+  echo "  -h, --help                                   Show this help page"
+  echo "  -l, --list                                   List all available commands"
+}
+
+function show_help_commands {
+  echo "Usage: [Command]                               Run the specified command"
+  echo "Commands:"
+  echo "ec_rebase_with_branch [branch name]            Rebase the current branch with a given branch"
+  echo "ec_push_changes                                Push the changes to the remote repository"
 
 }
 
 function ez_cmd {
-  if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-    show_help
+  
+  if [[ -z $1 ]]; then
+    show_help_options
+    return
   fi
+
+  if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    show_help_options
+    echo ""
+    show_help_commands
+  fi
+  
   if [[ "$1" == "-l" || "$1" == "--list" ]]; then
-    echo "Not supported for now."
+    show_help_commands
   fi
 }
 
