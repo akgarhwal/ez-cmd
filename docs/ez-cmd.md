@@ -1,19 +1,27 @@
-# ez-cmd
+# ez_cmd
+The ez_cmd plugin is a simple command line tool that provides two commands for Git users: ec_rebase_with_branch and ec_push_changes.
 
 ## Commands
 
-### `rebase_with_branch`
-
+## ec_rebase_with_branch
 This command will rebase your current branch with the latest changes from a specified base branch.
 
-Syntax: `rebase_with_branch <base_branch>`
+```zsh
+# Usage: 
+ec_rebase_with_branch <branch>
 
-Example: `rebase_with_branch master`
+# Example: 
+ec_rebase_with_branch develop
+```
 
-### `push_changes`
+## ec_push_changes
+This command allows you to push your branch to the remote repository.
 
-This command will push your local changes to the remote branch associated with your current local branch.
+```zsh
+# Usage:
+ec_push_changes
+```
 
-Syntax: `push_changes`
 
-Example: `push_changes`
+### Note
+* Please note that `ec_rebase_with_branch` command will not work if you have uncommitted changes.
