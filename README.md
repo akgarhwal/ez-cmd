@@ -12,6 +12,3 @@
 ```sh
 git clone https://github.com/akgarhwal/ez-cmd.git $ZSH_CUSTOM/plugins/ez-cmd
 ```
-
-## How to use ?
-// TODO: Add more details
