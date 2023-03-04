@@ -12,3 +12,11 @@
 ```sh
 git clone https://github.com/akgarhwal/ez-cmd.git $ZSH_CUSTOM/plugins/ez-cmd
 ```
+
+## Update `~/.zshrc` 
+```sh
+plugins=(
+    .....
+    ez-cmd
+)
+```
